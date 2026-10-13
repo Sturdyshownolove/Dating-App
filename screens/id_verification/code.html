@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fuuk’Up - ID Verification</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary": "#4d2600",
+                      "surface-container-highest": "#35343d",
+                      "on-secondary-fixed-variant": "#5d4200",
+                      "on-background": "#e5e0ed",
+                      "on-error": "#690005",
+                      "primary": "#c6bfff",
+                      "inverse-surface": "#e5e0ed",
+                      "on-tertiary-container": "#fff5f1",
+                      "on-primary-fixed-variant": "#4029ba",
+                      "surface-variant": "#35343d",
+                      "surface-container-high": "#2a2932",
+                      "primary-fixed-dim": "#c6bfff",
+                      "secondary-fixed-dim": "#f4be4e",
+                      "secondary-fixed": "#ffdea4",
+                      "on-secondary-container": "#382700",
+                      "surface-bright": "#3a3841",
+                      "on-primary-container": "#faf6ff",
+                      "surface": "#13121b",
+                      "secondary-container": "#b8891a",
+                      "on-error-container": "#ffdad6",
+                      "tertiary-fixed-dim": "#ffb77d",
+                      "on-tertiary-fixed": "#2f1500",
+                      "on-surface-variant": "#c8c4d7",
+                      "on-surface": "#e5e0ed",
+                      "tertiary-container": "#ac5d00",
+                      "primary-fixed": "#e4dfff",
+                      "surface-tint": "#c6bfff",
+                      "outline-variant": "#474554",
+                      "on-secondary": "#412d00",
+                      "inverse-primary": "#5847d2",
+                      "surface-container-low": "#1c1b23",
+                      "surface-container": "#201f27",
+                      "on-primary": "#2900a0",
+                      "error-container": "#93000a",
+                      "surface-container-lowest": "#0e0d15",
+                      "on-secondary-fixed": "#261900",
+                      "background": "#13121b",
+                      "on-primary-fixed": "#160066",
+                      "secondary": "#f4be4e",
+                      "primary-container": "#6c5ce7",
+                      "outline": "#928ea0",
+                      "error": "#ffb4ab",
+                      "tertiary-fixed": "#ffdcc3",
+                      "surface-dim": "#13121b",
+                      "inverse-on-surface": "#312f38",
+                      "tertiary": "#ffb77d",
+                      "on-tertiary-fixed-variant": "#6e3900"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "lg": "40px",
+                      "gutter": "16px",
+                      "base": "8px",
+                      "md": "24px",
+                      "xs": "4px",
+                      "sm": "12px",
+                      "margin-mobile": "20px"
+              },
+              "fontFamily": {
+                      "headline-lg": ["Plus Jakarta Sans"],
+                      "display": ["Plus Jakarta Sans"],
+                      "body-md": ["Plus Jakarta Sans"],
+                      "headline-md": ["Plus Jakarta Sans"],
+                      "body-lg": ["Plus Jakarta Sans"],
+                      "label-caps": ["Plus Jakarta Sans"]
+              },
+              "fontSize": {
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "display": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .fill-icon {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom glow effects based on style guidance */
+        .glow-primary {
+            box-shadow: 0 0 20px rgba(108, 92, 231, 0.2);
+        }
+        .glow-secondary {
+            box-shadow: 0 0 15px rgba(244, 190, 78, 0.15);
+        }
+        .glass-panel {
+            background: rgba(26, 19, 51, 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .scan-line {
+            background: linear-gradient(to bottom, transparent, rgba(244, 190, 78, 0.8), transparent);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md antialiased overflow-x-hidden selection:bg-primary-container selection:text-white">
+<!-- TopAppBar (Transactional - Hidden Nav Shell for focused task) -->
+<header class="fixed top-0 w-full z-50 border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)] bg-[#0F0C1A]/80 backdrop-blur-xl transition-colors active:scale-95 duration-200">
+<div class="flex justify-between items-center h-16 px-5 w-full">
+<button aria-label="Go back" class="text-white/60 hover:text-[#6C5CE7] transition-colors p-2 -ml-2 rounded-full">
+<span class="material-symbols-outlined text-2xl">arrow_back</span>
+</button>
+<div class="text-xl font-black text-white tracking-tighter uppercase font-['Plus_Jakarta_Sans'] font-bold tracking-tight">
+                Fuuk’Up
+            </div>
+<button aria-label="Support" class="text-white/60 hover:text-[#6C5CE7] transition-colors p-2 -mr-2 rounded-full invisible">
+<span class="material-symbols-outlined text-2xl">help</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-[88px] pb-md px-margin-mobile flex flex-col items-center max-w-lg mx-auto w-full">
+<!-- Header Text -->
+<div class="text-center mb-lg w-full">
+<h1 class="font-headline-lg text-headline-lg text-on-background mb-sm">Verify Identity</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Position your government ID within the frame to verify your elite status.</p>
+</div>
+<!-- Scanner Area -->
+<div class="relative w-full aspect-[4/3] rounded-xl overflow-hidden mb-lg glass-panel glow-secondary flex items-center justify-center bg-surface-container-low/50">
+<!-- Simulated Camera Feed Background -->
+<div class="absolute inset-0 opacity-40 bg-cover bg-center" data-alt="blurred view of a dark wooden desk top with subtle overhead warm lighting, simulating looking through a phone camera lens" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuALkWudhEwvehfjJ004bn7od_yLzlzrHUF1HwJao7vhrFPzOvxRwNUHTqLiJ-eX8v-TH41PGeXeD8iHFxyv_AANiTzbBTq7u02V64V3ztNKYAo7m28Rpx35ozO5BAKom6fHm4__Lck9rJvEMrsirBne1OwRedv_7TiN4CVSeQ6IJHM8Xsl62hAWZsiwRJYEdfggJrwwHTaztCRMXnaN3i1IXoegD-IsR1VJT19Q-cJcWWq0Dvggw3HU3K9e0HaIqpEx-zXkqyAmDbCf');">
+</div>
+<!-- Guide Frame -->
+<div class="relative z-10 w-4/5 h-3/5 border-2 border-secondary/50 rounded-lg shadow-[0_0_20px_rgba(244,190,78,0.2)] flex items-center justify-center">
+<!-- Corner Accents -->
+<div class="absolute -top-[2px] -left-[2px] w-4 h-4 border-t-4 border-l-4 border-secondary rounded-tl-lg"></div>
+<div class="absolute -top-[2px] -right-[2px] w-4 h-4 border-t-4 border-r-4 border-secondary rounded-tr-lg"></div>
+<div class="absolute -bottom-[2px] -left-[2px] w-4 h-4 border-b-4 border-l-4 border-secondary rounded-bl-lg"></div>
+<div class="absolute -bottom-[2px] -right-[2px] w-4 h-4 border-b-4 border-r-4 border-secondary rounded-br-lg"></div>
+<!-- ID Placeholder Graphic -->
+<span class="material-symbols-outlined text-secondary/40 text-6xl">badge</span>
+<!-- Scanning Animation Line -->
+<div class="absolute top-0 left-0 w-full h-1 scan-line animate-pulse"></div>
+</div>
+<!-- Instruction Overlay -->
+<div class="absolute bottom-4 left-0 w-full text-center z-20">
+<span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface-container-high/80 backdrop-blur-md border border-white/5 font-label-caps text-label-caps text-secondary uppercase tracking-widest">
+<span class="w-2 h-2 rounded-full bg-secondary animate-ping"></span>
+                    Align ID within frame
+                </span>
+</div>
+</div>
+<!-- Status & Guidance -->
+<div class="w-full space-y-md">
+<!-- Status Card -->
+<div class="glass-panel rounded-lg p-md flex items-start gap-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center shrink-0 border border-white/5 text-secondary">
+<span class="material-symbols-outlined fill-icon text-xl">shield_locked</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-background text-[18px] leading-tight mb-1">Verifying your identity</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-[14px]">Your data is encrypted and securely processed to maintain exclusivity.</p>
+</div>
+</div>
+<!-- Tips List -->
+<div class="px-sm">
+<ul class="space-y-sm">
+<li class="flex items-center gap-sm text-on-surface-variant font-body-md text-body-md text-[14px]">
+<span class="material-symbols-outlined text-secondary/70 text-lg">lightbulb</span>
+                        Ensure good lighting, avoid glare.
+                    </li>
+<li class="flex items-center gap-sm text-on-surface-variant font-body-md text-body-md text-[14px]">
+<span class="material-symbols-outlined text-secondary/70 text-lg">crop_free</span>
+                        Keep all four corners visible.
+                    </li>
+</ul>
+</div>
+</div>
+<!-- Actions -->
+<div class="mt-auto pt-lg w-full pb-safe">
+<button class="w-full bg-primary-container hover:bg-primary-container/90 text-on-primary-container font-headline-md text-[16px] py-4 rounded-lg glow-primary transition-all active:scale-98 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">photo_camera</span>
+                Capture ID Manually
+            </button>
+</div>
+</main>
+</body></html>

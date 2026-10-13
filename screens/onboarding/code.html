@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fuuk'Up Onboarding</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary": "#4d2600",
+                        "surface-container-highest": "#35343d",
+                        "on-secondary-fixed-variant": "#5d4200",
+                        "on-background": "#e5e0ed",
+                        "on-error": "#690005",
+                        "primary": "#c6bfff",
+                        "inverse-surface": "#e5e0ed",
+                        "on-tertiary-container": "#fff5f1",
+                        "on-primary-fixed-variant": "#4029ba",
+                        "surface-variant": "#35343d",
+                        "surface-container-high": "#2a2932",
+                        "primary-fixed-dim": "#c6bfff",
+                        "secondary-fixed-dim": "#f4be4e",
+                        "secondary-fixed": "#ffdea4",
+                        "on-secondary-container": "#382700",
+                        "surface-bright": "#3a3841",
+                        "on-primary-container": "#faf6ff",
+                        "surface": "#13121b",
+                        "secondary-container": "#b8891a",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#ffb77d",
+                        "on-tertiary-fixed": "#2f1500",
+                        "on-surface-variant": "#c8c4d7",
+                        "on-surface": "#e5e0ed",
+                        "tertiary-container": "#ac5d00",
+                        "primary-fixed": "#e4dfff",
+                        "surface-tint": "#c6bfff",
+                        "outline-variant": "#474554",
+                        "on-secondary": "#412d00",
+                        "inverse-primary": "#5847d2",
+                        "surface-container-low": "#1c1b23",
+                        "surface-container": "#201f27",
+                        "on-primary": "#2900a0",
+                        "error-container": "#93000a",
+                        "surface-container-lowest": "#0e0d15",
+                        "on-secondary-fixed": "#261900",
+                        "background": "#13121b",
+                        "on-primary-fixed": "#160066",
+                        "secondary": "#f4be4e",
+                        "primary-container": "#6c5ce7",
+                        "outline": "#928ea0",
+                        "error": "#ffb4ab",
+                        "tertiary-fixed": "#ffdcc3",
+                        "surface-dim": "#13121b",
+                        "inverse-on-surface": "#312f38",
+                        "tertiary": "#ffb77d",
+                        "on-tertiary-fixed-variant": "#6e3900"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "40px",
+                        "gutter": "16px",
+                        "base": "8px",
+                        "md": "24px",
+                        "xs": "4px",
+                        "sm": "12px",
+                        "margin-mobile": "20px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "display": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "label-caps": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "display": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Custom scrollbar for horizontal carousel if needed, though hidden is better for pure swiping */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md overflow-hidden antialiased selection:bg-primary-container selection:text-on-primary-container">
+<!-- Main Content Area -->
+<main class="flex-grow relative w-full h-full">
+<!-- Background Ambient Glow -->
+<div class="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+<div class="absolute top-[-10%] right-[-10%] w-[50vw] h-[50vw] bg-primary-container/10 rounded-full blur-[100px]"></div>
+<div class="absolute bottom-[-10%] left-[-10%] w-[60vw] h-[60vw] bg-secondary/5 rounded-full blur-[120px]"></div>
+</div>
+<!-- Carousel Container -->
+<div class="relative w-full h-[707px] flex overflow-x-auto snap-x snap-mandatory hide-scrollbar z-10">
+<!-- Slide 1: Premium Matches -->
+<div class="w-full h-full flex-shrink-0 snap-center flex flex-col justify-center items-center px-margin-mobile relative">
+<!-- Image Wrapper -->
+<div class="relative w-full max-w-sm aspect-[4/5] rounded-3xl overflow-hidden mb-lg shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-surface-container-highest/50">
+<img alt="Luxury lifestyle" class="w-full h-full object-cover" data-alt="Elegant couple in formal wear holding champagne glasses at a high-end dimly lit bar with gold accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKnWhtIVccFeLBPqHSMrt5mwUr6Jenemb9n0x9MKALf_pRSWww2riYtIlcaFb4NgqS8sbfyEMLApvL41S0VAfTTunHOALYoy9hSjuom8jGsOuyZCTG-iKwOA4z7v5Mhq76GvgUXrxgR1bnbTDtwmoiIlNPW62e1eZ_RESeS0xfvVl5cnwzVIG38p1bwEdjxb9gPD0EiZMCkymt_jcXas46VXxrHWrnObzj6KX4KGvnGzLORHRxRvaT6LpSzjsdHSo4RKBQlBVb78ww"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent"></div>
+<!-- Decorative Element -->
+<div class="absolute bottom-md left-md right-md">
+<div class="inline-flex items-center justify-center p-sm bg-surface-container/60 backdrop-blur-md rounded-full border border-white/10 mb-sm shadow-[0_0_15px_rgba(244,190,78,0.2)]">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+</div>
+</div>
+</div>
+<!-- Text Content -->
+<div class="text-center max-w-sm px-gutter">
+<h2 class="font-headline-lg text-headline-lg mb-sm text-on-surface">Curated Excellence</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Connect with a highly vetted, exclusive community designed for meaningful encounters.</p>
+</div>
+</div>
+<!-- Slide 2: The 1-Hour Timer -->
+<div class="w-full h-full flex-shrink-0 snap-center flex flex-col justify-center items-center px-margin-mobile relative">
+<!-- Image/Graphic Wrapper -->
+<div class="relative w-full max-w-sm aspect-[4/5] rounded-3xl overflow-hidden mb-lg flex items-center justify-center bg-surface-container-low border border-surface-container-highest/50 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+<div class="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=80')] bg-cover bg-center mix-blend-overlay"></div>
+<!-- Timer Ring Component -->
+<div class="relative w-48 h-48 rounded-full border-4 border-surface-container-highest flex items-center justify-center shadow-[0_0_40px_rgba(108,92,231,0.15)]">
+<!-- Active Stroke Simulation -->
+<div class="absolute inset-[-4px] rounded-full border-4 border-transparent border-t-secondary border-r-secondary border-b-secondary rotate-45"></div>
+<div class="text-center">
+<span class="font-display text-display text-on-surface block">60</span>
+<span class="font-label-caps text-label-caps text-secondary tracking-widest uppercase">Minutes</span>
+</div>
+</div>
+</div>
+<!-- Text Content -->
+<div class="text-center max-w-sm px-gutter">
+<h2 class="font-headline-lg text-headline-lg mb-sm text-on-surface">The Golden Hour</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Matches expire in 60 minutes. Spark a connection or let it fade. Urgency breeds authenticity.</p>
+</div>
+</div>
+<!-- Slide 3: Safety/Verification -->
+<div class="w-full h-full flex-shrink-0 snap-center flex flex-col justify-center items-center px-margin-mobile relative">
+<!-- Image Wrapper -->
+<div class="relative w-full max-w-sm aspect-[4/5] rounded-3xl overflow-hidden mb-lg shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-surface-container-highest/50">
+<img alt="Privacy and Security" class="w-full h-full object-cover" data-alt="Abstract dark luxury interior with subtle glowing amber lighting and minimalist architecture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFt3QA633a1fRrEYymH3P-p5TCCeFtUtsmk-DdmlnV1xj7Nc1iuuiO27WDrivsJMTks-Pk2w_RSaARGo5oGrYvQ0k0yV5YwCSTETwjQBkWyJloMSB6DFor6IqCiz2q-fKK9RKZDxwRCQRISAR6G4bdNUMXbRwz4qh1ZincMnHp2esTSUPws93kdEo2EBdilki3--iu_BkjgyXkRzUNU_P-uzxKhxOrCdL73Kzj6rbRXx7_sm69J_cZkbdGXJm66O1graylty_ih6jX"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent"></div>
+<!-- Decorative Element -->
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-32 h-32 rounded-full bg-surface-container/40 backdrop-blur-xl border border-white/10 flex items-center justify-center shadow-[0_0_30px_rgba(108,92,231,0.2)]">
+<span class="material-symbols-outlined text-[48px] text-primary" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+</div>
+</div>
+</div>
+<!-- Text Content -->
+<div class="text-center max-w-sm px-gutter">
+<h2 class="font-headline-lg text-headline-lg mb-sm text-on-surface">Ironclad Privacy</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Every member is strictly verified. Your data is encrypted, your presence is secure.</p>
+</div>
+</div>
+</div>
+<!-- Bottom Controls (Pagination & Button) -->
+<div class="absolute bottom-0 left-0 w-full px-margin-mobile pb-lg pt-md bg-gradient-to-t from-background via-background to-transparent z-20 flex flex-col items-center">
+<!-- Pagination Indicators -->
+<div class="flex space-x-2 mb-md">
+<div class="w-8 h-1 rounded-full bg-secondary"></div>
+<div class="w-2 h-1 rounded-full bg-surface-container-highest"></div>
+<div class="w-2 h-1 rounded-full bg-surface-container-highest"></div>
+</div>
+<!-- Primary Action Button -->
+<button class="w-full max-w-sm bg-primary-container text-on-primary-container font-headline-md text-headline-md py-sm px-md rounded-xl shadow-[0_0_20px_rgba(108,92,231,0.3)] hover:bg-inverse-primary active:scale-95 transition-all duration-200 border border-white/10 flex items-center justify-center gap-xs">
+                Enter the Club
+                <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<p class="mt-sm font-body-md text-body-md text-on-surface-variant/60 text-center">Already approved? <a class="text-primary hover:text-primary-fixed underline decoration-white/20 underline-offset-4" href="#">Log in</a></p>
+</div>
+</main>
+</body></html>

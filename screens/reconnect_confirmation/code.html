@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Reconnect Modal - Aura Luxe</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed": "#2f1500",
+                        "on-surface-variant": "#c8c4d7",
+                        "surface-container": "#201f27",
+                        "secondary": "#f4be4e",
+                        "primary-fixed-dim": "#c6bfff",
+                        "surface-container-highest": "#35343d",
+                        "secondary-fixed-dim": "#f4be4e",
+                        "on-secondary": "#412d00",
+                        "surface-bright": "#3a3841",
+                        "surface": "#13121b",
+                        "tertiary-container": "#ac5d00",
+                        "on-primary-fixed-variant": "#4029ba",
+                        "on-background": "#e5e0ed",
+                        "on-tertiary-fixed-variant": "#6e3900",
+                        "on-secondary-container": "#382700",
+                        "on-error": "#690005",
+                        "background": "#13121b",
+                        "secondary-fixed": "#ffdea4",
+                        "primary-container": "#6c5ce7",
+                        "outline-variant": "#474554",
+                        "primary-fixed": "#e4dfff",
+                        "on-secondary-fixed": "#261900",
+                        "surface-container-low": "#1c1b23",
+                        "surface-tint": "#c6bfff",
+                        "on-tertiary-container": "#fff5f1",
+                        "on-primary-container": "#faf6ff",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-lowest": "#0e0d15",
+                        "surface-variant": "#35343d",
+                        "surface-container-high": "#2a2932",
+                        "on-tertiary": "#4d2600",
+                        "primary": "#c6bfff",
+                        "tertiary-fixed": "#ffdcc3",
+                        "on-surface": "#e5e0ed",
+                        "inverse-on-surface": "#312f38",
+                        "outline": "#928ea0",
+                        "on-secondary-fixed-variant": "#5d4200",
+                        "error": "#ffb4ab",
+                        "inverse-primary": "#5847d2",
+                        "inverse-surface": "#e5e0ed",
+                        "surface-dim": "#13121b",
+                        "on-primary": "#2900a0",
+                        "tertiary": "#ffb77d",
+                        "error-container": "#93000a",
+                        "secondary-container": "#b8891a",
+                        "tertiary-fixed-dim": "#ffb77d",
+                        "on-primary-fixed": "#160066",
+                        "base-level-0": "#0F0C1A",
+                        "base-level-1": "#1A1333"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "20px",
+                        "sm": "12px",
+                        "md": "24px",
+                        "base": "8px",
+                        "xs": "4px",
+                        "lg": "40px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "label-caps": ["Plus Jakarta Sans"],
+                        "display": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                        "display": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-base-level-0 text-on-surface antialiased h-screen w-full flex items-center justify-center relative overflow-hidden font-body-md">
+<!-- Blurred Background (Simulating underlying screen) -->
+<div class="absolute inset-0 z-0 bg-base-level-0">
+<div class="absolute inset-0 bg-cover bg-center opacity-30" data-alt="Dark, moody restaurant or bar setting with blurred lights, suggesting an expired connection" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD9xPPWCBAfbsE-z0y1JyAIoYEq4Kj_WENtTtGaCPS6OMSKTmHhzQHGGSIjHqEpvbmV-AYPJZf4VubLgRFfiEaN_WjrXxX7IeSOXwS1x8SlHb9OzpVTd3ZDyHkpXJ5KCLP7k0CbLKIf-WlVn_TLlt8-AoiujrO3jlAOJuPTXiDTJukNr6DIcTDJ0ysqY5SWFd_J_y88kTaCA-k2dJOWVuUPy8XJ1oNzzDVuiSvpNOZoaeuXDds4GC23lOHrSPqFYKrAUIA62fZA9WRx');"></div>
+<div class="absolute inset-0 bg-base-level-0/80 backdrop-blur-xl"></div>
+</div>
+<!-- Modal Container -->
+<main class="relative z-10 w-full max-w-sm mx-margin-mobile">
+<!-- Glassmorphic Card -->
+<div class="bg-primary-container/10 backdrop-blur-[20px] rounded-[32px] border border-white/10 p-md flex flex-col items-center text-center shadow-[0_8px_32px_rgba(0,0,0,0.5)]">
+<!-- Aura Luxe Badge -->
+<div class="w-12 h-12 rounded-full bg-base-level-1 flex items-center justify-center mb-md border border-secondary/20 shadow-[0_0_15px_rgba(244,190,78,0.15)]">
+<span class="material-symbols-outlined text-secondary text-2xl">diamond</span>
+</div>
+<!-- Avatar -->
+<div class="relative mb-sm">
+<div class="w-24 h-24 rounded-full p-[2px] bg-gradient-to-tr from-secondary/50 to-secondary animate-pulse shadow-[0_0_20px_rgba(244,190,78,0.3)]">
+<img alt="Elena" class="w-full h-full object-cover rounded-full border-2 border-base-level-0" data-alt="Portrait of a sophisticated young woman with subtle lighting, looking directly at the camera" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTDodScWGTJ011ton6zZn_m4Z_98outhNyDNNDzdrXh8Y9cAbFKa_c8cxl6m4zgpPVqDnDs_Jhoc3dGYbGaU-fO3VqgXX8gtsr4XCepd7kweXB3iUXewSQiUW6Xo5x5_3ZARejyREil168q2PNFQ5wKHmS0gTQsjuj2PXAVshlxh2JiGdcU0S4NSrilz2NvoL43tkI3m6Al4KlfVhAMCMlns81pEWKwAjiZH5bvpcMFYibYA4iZcVK1AANz8vFJ6QkflOetgq9iVT1"/>
+</div>
+</div>
+<!-- Typography -->
+<h2 class="font-headline-md text-headline-md text-on-surface mb-base">Bring Back the Spark?</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-lg px-sm">Reconnect with Elena for another 60 minutes.</p>
+<!-- Actions -->
+<div class="w-full flex flex-col gap-base mb-md">
+<button class="w-full py-4 rounded-xl bg-primary-container text-on-primary-container font-headline-md text-body-md font-semibold shadow-[0_0_20px_rgba(108,92,231,0.3)] hover:bg-primary-container/90 active:scale-95 transition-all duration-200">
+                    Confirm Reconnect
+                </button>
+<button class="w-full py-3 rounded-xl bg-transparent text-outline font-body-md text-body-md hover:text-on-surface transition-colors duration-200">
+                    Maybe Later
+                </button>
+</div>
+<!-- Footer Note -->
+<p class="font-label-caps text-label-caps text-secondary/70 flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px]">monetization_on</span>
+                Uses 1 Reconnect Credit
+            </p>
+</div>
+</main>
+</body></html>

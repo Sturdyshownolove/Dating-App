@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Timer Expired - AURA LUXE</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-fixed-dim": "#ffb77d",
+                      "on-primary-fixed": "#160066",
+                      "tertiary": "#ffb77d",
+                      "error-container": "#93000a",
+                      "secondary-container": "#b8891a",
+                      "inverse-primary": "#5847d2",
+                      "inverse-surface": "#e5e0ed",
+                      "surface-dim": "#13121b",
+                      "on-primary": "#2900a0",
+                      "error": "#ffb4ab",
+                      "outline": "#928ea0",
+                      "on-secondary-fixed-variant": "#5d4200",
+                      "tertiary-fixed": "#ffdcc3",
+                      "on-surface": "#e5e0ed",
+                      "inverse-on-surface": "#312f38",
+                      "surface-container-high": "#2a2932",
+                      "on-tertiary": "#4d2600",
+                      "primary": "#c6bfff",
+                      "surface-container-lowest": "#0e0d15",
+                      "surface-variant": "#35343d",
+                      "surface-tint": "#c6bfff",
+                      "on-tertiary-container": "#fff5f1",
+                      "on-primary-container": "#faf6ff",
+                      "on-error-container": "#ffdad6",
+                      "secondary-fixed": "#ffdea4",
+                      "primary-container": "#6c5ce7",
+                      "outline-variant": "#474554",
+                      "primary-fixed": "#e4dfff",
+                      "on-secondary-fixed": "#261900",
+                      "surface-container-low": "#1c1b23",
+                      "on-error": "#690005",
+                      "background": "#13121b",
+                      "on-secondary": "#412d00",
+                      "surface-bright": "#3a3841",
+                      "surface": "#13121b",
+                      "tertiary-container": "#ac5d00",
+                      "on-primary-fixed-variant": "#4029ba",
+                      "on-background": "#e5e0ed",
+                      "on-tertiary-fixed-variant": "#6e3900",
+                      "on-secondary-container": "#382700",
+                      "secondary": "#f4be4e",
+                      "primary-fixed-dim": "#c6bfff",
+                      "surface-container-highest": "#35343d",
+                      "secondary-fixed-dim": "#f4be4e",
+                      "on-tertiary-fixed": "#2f1500",
+                      "on-surface-variant": "#c8c4d7",
+                      "surface-container": "#201f27"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-mobile": "20px",
+                      "sm": "12px",
+                      "xs": "4px",
+                      "lg": "40px",
+                      "gutter": "16px",
+                      "md": "24px",
+                      "base": "8px"
+              },
+              "fontFamily": {
+                      "headline-lg": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "body-md": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "label-caps": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "display": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "headline-md": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "body-lg": [
+                              "Plus Jakarta Sans"
+                      ]
+              },
+              "fontSize": {
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.1em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "display": [
+                              "40px",
+                              {
+                                      "lineHeight": "48px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-[#0F0C1A] text-on-background font-body-md min-h-screen flex flex-col items-center justify-center relative overflow-hidden">
+<!-- Background Glow Effects -->
+<div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary-container/10 rounded-full blur-[100px] -z-10"></div>
+<div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-[100px] -z-10"></div>
+<!-- Main Content Canvas -->
+<main class="w-full max-w-md px-margin-mobile flex flex-col items-center z-10 space-y-lg">
+<!-- Timer Ring Section -->
+<div class="relative w-64 h-64 flex items-center justify-center">
+<!-- Background Track -->
+<svg class="absolute inset-0 w-full h-full" viewbox="0 0 100 100">
+<circle cx="50" cy="50" fill="none" r="45" stroke="#1A1333" stroke-width="2"></circle>
+</svg>
+<!-- Foreground Track (Zeroed out) -->
+<svg class="absolute inset-0 w-full h-full transform -rotate-90 opacity-30" viewbox="0 0 100 100">
+<circle cx="50" cy="50" fill="none" r="45" stroke="#474554" stroke-dasharray="283" stroke-dashoffset="283" stroke-width="2"></circle>
+</svg>
+<!-- Timer Text -->
+<div class="flex flex-col items-center">
+<span class="font-display text-display text-outline-variant drop-shadow-[0_0_8px_rgba(71,69,84,0.5)]">00:00</span>
+<span class="font-label-caps text-label-caps text-outline-variant mt-2 uppercase tracking-widest">Expired</span>
+</div>
+</div>
+<!-- Typography Section -->
+<div class="text-center space-y-sm">
+<h1 class="font-headline-lg text-headline-lg text-on-background">Connection Expired</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-[280px] mx-auto">
+                The clock has run out. Your window with Elena has closed. Don't let the next one slip away.
+            </p>
+</div>
+<!-- Premium Upsell Card -->
+<div class="w-full bg-[#1A1333]/80 backdrop-blur-[20px] rounded-xl border border-white/10 p-md relative overflow-hidden group">
+<!-- Subtle glow behind card content -->
+<div class="absolute inset-0 bg-gradient-to-br from-secondary/5 to-transparent opacity-50 z-0"></div>
+<div class="relative z-10 flex flex-col items-center text-center space-y-sm">
+<div class="flex items-center space-x-2 text-secondary mb-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+<span class="font-label-caps text-label-caps uppercase tracking-widest">Aura Luxe</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-background leading-tight">Reconnect with Elena?</h2>
+<p class="font-body-sm text-body-md text-on-surface-variant">
+                    Upgrade to Aura Luxe to extend expired timers and regain lost connections.
+                </p>
+<!-- Secondary Premium Button -->
+<button class="mt-md w-full py-3 px-6 rounded-full bg-secondary/10 border border-secondary text-secondary font-label-caps text-label-caps uppercase tracking-widest hover:bg-secondary hover:text-[#0F0C1A] transition-all duration-300 drop-shadow-[0_0_12px_rgba(244,190,78,0.3)] hover:drop-shadow-[0_0_20px_rgba(244,190,78,0.6)]">
+                    Unlock Aura Luxe
+                </button>
+</div>
+</div>
+<!-- Primary Action -->
+<button class="w-full py-4 rounded-full bg-primary-container text-on-primary-container font-label-caps text-label-caps uppercase tracking-widest drop-shadow-[0_0_15px_rgba(108,92,231,0.4)] hover:scale-[0.98] transition-transform duration-200">
+            Return to Discovery
+        </button>
+</main>
+</body></html>

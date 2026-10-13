@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Purchase Success - Fuuk'Up</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-highest": "#35343d",
+                        "on-tertiary-fixed-variant": "#6e3900",
+                        "surface-dim": "#13121b",
+                        "inverse-on-surface": "#312f38",
+                        "surface-container-low": "#1c1b23",
+                        "primary": "#c6bfff",
+                        "surface-bright": "#3a3841",
+                        "tertiary": "#ffb77d",
+                        "tertiary-fixed-dim": "#ffb77d",
+                        "on-tertiary-container": "#fff5f1",
+                        "primary-fixed": "#e4dfff",
+                        "inverse-surface": "#e5e0ed",
+                        "on-tertiary": "#4d2600",
+                        "surface": "#13121b",
+                        "tertiary-fixed": "#ffdcc3",
+                        "secondary-fixed": "#ffdea4",
+                        "on-primary": "#2900a0",
+                        "secondary": "#f4be4e",
+                        "surface-tint": "#c6bfff",
+                        "surface-container-high": "#2a2932",
+                        "on-background": "#e5e0ed",
+                        "on-secondary-fixed-variant": "#5d4200",
+                        "on-secondary": "#412d00",
+                        "on-tertiary-fixed": "#2f1500",
+                        "surface-variant": "#35343d",
+                        "secondary-container": "#b8891a",
+                        "outline-variant": "#474554",
+                        "surface-container-lowest": "#0e0d15",
+                        "surface-container": "#201f27",
+                        "on-primary-fixed-variant": "#4029ba",
+                        "on-secondary-fixed": "#261900",
+                        "on-error": "#690005",
+                        "error-container": "#93000a",
+                        "primary-fixed-dim": "#c6bfff",
+                        "on-primary-container": "#faf6ff",
+                        "inverse-primary": "#5847d2",
+                        "on-secondary-container": "#382700",
+                        "background": "#13121b",
+                        "tertiary-container": "#ac5d00",
+                        "secondary-fixed-dim": "#f4be4e",
+                        "on-primary-fixed": "#160066",
+                        "on-error-container": "#ffdad6",
+                        "error": "#ffb4ab",
+                        "outline": "#928ea0",
+                        "primary-container": "#6c5ce7",
+                        "on-surface": "#e5e0ed",
+                        "on-surface-variant": "#c8c4d7"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "24px",
+                        "lg": "40px",
+                        "gutter": "16px",
+                        "xs": "4px",
+                        "margin-mobile": "20px",
+                        "base": "8px",
+                        "sm": "12px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "label-caps": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "display": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "display": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md antialiased overflow-x-hidden">
+<!-- Ambient Glow Background -->
+<div class="fixed top-[-20%] left-[-10%] w-[120%] h-[120%] bg-[radial-gradient(ellipse_at_top_center,_var(--tw-colors-secondary-fixed-dim)_0%,_transparent_40%)] opacity-[0.03] pointer-events-none z-0"></div>
+<!-- TopAppBar (from JSON) -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-5 h-16 bg-[#0F0C1A] dark:bg-[#0F0C1A] border-b border-white/5">
+<button aria-label="Close" class="text-[#6C5CE7] dark:text-[#6C5CE7] hover:opacity-80 transition-opacity scale-95 duration-200 active:scale-90 flex items-center justify-center p-2 rounded-full z-10">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<h1 class="text-white font-['Plus_Jakarta_Sans'] uppercase tracking-[0.2em] text-xs font-bold">
+                PURCHASE SUCCESS
+            </h1>
+</div>
+<div class="w-10"></div> <!-- Balancer for flex-between -->
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 flex flex-col pt-24 pb-safe px-margin-mobile relative z-10">
+<div class="flex-1 flex flex-col justify-center items-center">
+<!-- Luxury Graphic Centerpiece -->
+<div class="relative flex justify-center items-center mb-lg">
+<!-- Outer Halo -->
+<div class="absolute inset-0 bg-secondary/15 blur-[50px] rounded-full w-40 h-40 m-auto mix-blend-screen"></div>
+<!-- Inner Glow -->
+<div class="absolute inset-0 bg-secondary-fixed/20 blur-[20px] rounded-full w-24 h-24 m-auto"></div>
+<!-- Glassmorphic Coin/Badge -->
+<div class="relative w-28 h-28 rounded-full border border-secondary/20 bg-surface-container-highest/40 backdrop-blur-xl flex justify-center items-center shadow-[0_0_40px_rgba(244,190,78,0.15)] overflow-hidden">
+<!-- Shimmer effect -->
+<div class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent w-full h-full transform -rotate-45"></div>
+<span class="material-symbols-outlined text-secondary font-display" data-icon="check_circle" data-weight="fill" style="font-size: 56px; font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<!-- Typography Content -->
+<div class="text-center w-full max-w-sm mx-auto mb-lg">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-xs tracking-tight">Credits Added</h2>
+<p class="font-body-md text-body-md text-on-surface-variant/80">
+                    Your account has been credited with <span class="text-secondary font-bold">5 Reconnect Credits</span>. You're ready to bring back the spark.
+                </p>
+</div>
+<!-- Glassmorphic Summary Card -->
+<div class="w-full max-w-sm p-6 rounded-xl bg-surface-container-low/60 backdrop-blur-md border border-outline-variant/20 shadow-lg relative overflow-hidden">
+<!-- Card subtle gradient -->
+<div class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-white/[0.02] to-transparent pointer-events-none"></div>
+<div class="flex justify-between items-center mb-sm relative z-10">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest opacity-80">New Balance</span>
+<span class="material-symbols-outlined text-secondary/70" data-icon="auto_awesome" style="font-size: 20px;">auto_awesome</span>
+</div>
+<div class="flex items-baseline gap-2 relative z-10">
+<span class="font-display text-display text-on-surface">12</span>
+<span class="font-body-md text-body-md text-on-surface-variant">Credits available</span>
+</div>
+</div>
+</div>
+<!-- Primary Action -->
+<div class="w-full max-w-sm mx-auto mt-8 mb-6">
+<button class="w-full py-4 rounded-full bg-primary-container text-on-primary-container font-headline-md text-body-lg shadow-[0_0_20px_rgba(108,92,231,0.25)] hover:shadow-[0_0_30px_rgba(108,92,231,0.4)] transition-all duration-300 active:scale-[0.98] flex justify-center items-center relative overflow-hidden group">
+<span class="relative z-10 font-bold">Back to Discovery</span>
+<!-- Button Inner Shimmer -->
+<div class="absolute top-0 -inset-full h-full w-1/2 z-5 block transform -skew-x-12 bg-gradient-to-r from-transparent to-white opacity-10 group-hover:animate-[shimmer_1.5s_infinite]"></div>
+</button>
+</div>
+</main>
+<!-- BottomNavBar SUPPRESSED per Semantic Shell Mandate (Success/Transactional Intent) -->
+</body></html>

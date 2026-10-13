@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ghost Mode Activation - Fuuk'Up</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "tertiary": "#ffb77d",
+                        "primary-container": "#6c5ce7",
+                        "surface-container": "#201f27",
+                        "surface-dim": "#13121b",
+                        "surface-container-lowest": "#0e0d15",
+                        "error-container": "#93000a",
+                        "on-error": "#690005",
+                        "surface-container-highest": "#35343d",
+                        "surface": "#13121b",
+                        "on-secondary-fixed": "#261900",
+                        "outline-variant": "#474554",
+                        "tertiary-fixed": "#ffdcc3",
+                        "secondary-fixed": "#ffdea4",
+                        "on-secondary-fixed-variant": "#5d4200",
+                        "on-primary-fixed-variant": "#4029ba",
+                        "background": "#13121b",
+                        "on-secondary": "#412d00",
+                        "outline": "#928ea0",
+                        "on-background": "#e5e0ed",
+                        "primary-fixed-dim": "#c6bfff",
+                        "primary-fixed": "#e4dfff",
+                        "on-tertiary-container": "#fff5f1",
+                        "surface-container-low": "#1c1b23",
+                        "on-tertiary": "#4d2600",
+                        "on-surface-variant": "#c8c4d7",
+                        "tertiary-container": "#ac5d00",
+                        "surface-bright": "#3a3841",
+                        "surface-container-high": "#2a2932",
+                        "on-primary": "#2900a0",
+                        "error": "#ffb4ab",
+                        "secondary-container": "#b8891a",
+                        "on-tertiary-fixed": "#2f1500",
+                        "on-secondary-container": "#382700",
+                        "primary": "#c6bfff",
+                        "inverse-surface": "#e5e0ed",
+                        "surface-variant": "#35343d",
+                        "secondary-fixed-dim": "#f4be4e",
+                        "inverse-on-surface": "#312f38",
+                        "secondary": "#f4be4e",
+                        "on-primary-fixed": "#160066",
+                        "inverse-primary": "#5847d2",
+                        "on-tertiary-fixed-variant": "#6e3900",
+                        "on-primary-container": "#faf6ff",
+                        "on-surface": "#e5e0ed",
+                        "tertiary-fixed-dim": "#ffb77d",
+                        "on-error-container": "#ffdad6",
+                        "surface-tint": "#c6bfff",
+                        "brand-dark": "#0F0C1A",
+                        "brand-secondary": "#1A1333",
+                        "brand-primary": "#6C5CE7",
+                        "brand-gold": "#D4AF37",
+                        "brand-gold-alt": "#FFC857"
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.25rem",
+                        lg: "0.5rem",
+                        xl: "0.75rem",
+                        full: "9999px"
+                    },
+                    spacing: {
+                        "margin-mobile": "20px",
+                        "base": "8px",
+                        "xs": "4px",
+                        "sm": "12px",
+                        "gutter": "16px",
+                        "md": "24px",
+                        "lg": "40px"
+                    },
+                    fontFamily: {
+                        "label-caps": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "display": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"]
+                    },
+                    fontSize: {
+                        "label-caps": ["12px", { lineHeight: "16px", letterSpacing: "0.1em", fontWeight: "700" }],
+                        "headline-md": ["24px", { lineHeight: "32px", fontWeight: "600" }],
+                        "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+                        "display": ["40px", { lineHeight: "48px", letterSpacing: "-0.02em", fontWeight: "700" }],
+                        "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+                        "headline-lg": ["32px", { lineHeight: "40px", letterSpacing: "-0.01em", fontWeight: "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(26, 19, 51, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .glow-gold {
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.15);
+        }
+        .text-gradient-gold {
+            background: linear-gradient(135deg, #FFC857 0%, #D4AF37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        /* Custom Toggle Switch Styles */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #D4AF37;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #D4AF37;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-brand-dark text-on-surface min-h-screen flex flex-col font-['Plus_Jakarta_Sans'] selection:bg-brand-primary/30 selection:text-white">
+<!-- Top App Bar -->
+<header class="bg-[#0F0C1A]/80 backdrop-blur-md font-['Plus_Jakarta_Sans'] font-bold tracking-tight docked full-width top-0 z-50 border-b border-white/10 shadow-[0_4_20px_rgba(108,92,231,0.1)] flex justify-between items-center w-full px-5 h-16 fixed">
+<button class="text-slate-400 hover:opacity-80 transition-opacity flex items-center justify-center">
+<span class="material-symbols-outlined text-2xl" data-icon="close">close</span>
+</button>
+<div class="text-xl font-black text-white bg-clip-text bg-gradient-to-r from-[#6C5CE7] to-[#A29BFE]">
+            Fuuk'Up
+        </div>
+<div class="w-6 h-6"></div> <!-- Spacer for centering -->
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-24 pb-32 px-margin-mobile flex flex-col items-center justify-center relative overflow-hidden">
+<!-- Background Ambient Glow -->
+<div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-brand-primary rounded-full blur-[120px] opacity-10 pointer-events-none"></div>
+<div class="absolute bottom-1/4 left-1/2 -translate-x-1/2 w-80 h-80 bg-brand-gold rounded-full blur-[100px] opacity-5 pointer-events-none"></div>
+<div class="w-full max-w-md flex flex-col items-center space-y-md relative z-10">
+<!-- Icon/Hero Graphic -->
+<div class="relative flex items-center justify-center mb-sm">
+<div class="absolute inset-0 bg-brand-gold/20 rounded-full blur-2xl"></div>
+<div class="w-24 h-24 rounded-full glass-panel flex items-center justify-center border border-brand-gold/20 glow-gold relative z-10">
+<span class="material-symbols-outlined text-[48px] text-brand-gold-alt" data-icon="visibility_off" style="font-variation-settings: 'FILL' 1; color: #FFC857; text-shadow: 0 0 12px rgba(255, 200, 87, 0.4);">visibility_off</span>
+</div>
+</div>
+<!-- Header -->
+<div class="text-center space-y-xs">
+<h1 class="font-headline-lg text-headline-lg text-white tracking-tight">Ghost Mode</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-[280px] mx-auto">
+                    Move through the shadows. See without being seen.
+                </p>
+</div>
+<!-- Benefits List (Bento-style layout) -->
+<div class="w-full glass-panel rounded-2xl p-sm space-y-base mt-md">
+<div class="flex items-start space-x-sm p-sm rounded-xl hover:bg-white/5 transition-colors">
+<div class="mt-1 flex-shrink-0 w-8 h-8 rounded-full bg-brand-primary/20 flex items-center justify-center text-brand-primary">
+<span class="material-symbols-outlined text-sm" data-icon="travel_explore">travel_explore</span>
+</div>
+<div>
+<h3 class="font-body-md text-body-md text-white font-medium">Browse unseen</h3>
+<p class="font-body-md text-sm text-on-surface-variant opacity-80 mt-1">View profiles without leaving a trace in their visitor history.</p>
+</div>
+</div>
+<div class="h-px w-full bg-white/5"></div>
+<div class="flex items-start space-x-sm p-sm rounded-xl hover:bg-white/5 transition-colors">
+<div class="mt-1 flex-shrink-0 w-8 h-8 rounded-full bg-brand-primary/20 flex items-center justify-center text-brand-primary">
+<span class="material-symbols-outlined text-sm" data-icon="favorite">favorite</span>
+</div>
+<div>
+<h3 class="font-body-md text-body-md text-white font-medium">Selective visibility</h3>
+<p class="font-body-md text-sm text-on-surface-variant opacity-80 mt-1">Your profile is completely hidden until you swipe right.</p>
+</div>
+</div>
+<div class="h-px w-full bg-white/5"></div>
+<div class="flex items-start space-x-sm p-sm rounded-xl hover:bg-white/5 transition-colors">
+<div class="mt-1 flex-shrink-0 w-8 h-8 rounded-full bg-brand-primary/20 flex items-center justify-center text-brand-primary">
+<span class="material-symbols-outlined text-sm" data-icon="do_not_disturb_on">do_not_disturb_on</span>
+</div>
+<div>
+<h3 class="font-body-md text-body-md text-white font-medium">Always offline</h3>
+<p class="font-body-md text-sm text-on-surface-variant opacity-80 mt-1">Your online status indicator will remain permanently off.</p>
+</div>
+</div>
+</div>
+<!-- Membership Badge -->
+<div class="mt-md flex items-center justify-center space-x-2 bg-brand-secondary/50 border border-brand-gold/20 rounded-full py-2 px-4 backdrop-blur-sm">
+<span class="material-symbols-outlined text-brand-gold text-sm" data-icon="workspace_premium" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+<span class="font-label-caps text-label-caps text-brand-gold tracking-widest uppercase">Aura Luxe Included</span>
+</div>
+</div>
+</main>
+<!-- Bottom Action Area (Fixed) -->
+<div class="fixed bottom-0 left-0 w-full p-margin-mobile glass-panel rounded-t-3xl shadow-[0_-10px_40px_rgba(0,0,0,0.6)] z-40 border-t border-white/5">
+<div class="max-w-md mx-auto flex flex-col space-y-md">
+<!-- Toggle Switch Row -->
+<div class="flex items-center justify-between px-2">
+<div class="flex flex-col">
+<span class="font-body-lg text-body-lg text-white font-medium">Activate Ghost Mode</span>
+<span class="font-body-md text-sm text-on-surface-variant">Enable total privacy</span>
+</div>
+<div class="relative inline-block w-14 h-8 align-middle select-none transition duration-200 ease-in">
+<input checked="" class="toggle-checkbox absolute block w-8 h-8 rounded-full bg-white border-4 appearance-none cursor-pointer border-brand-secondary z-10 transition-all duration-300 left-0" id="toggle" name="toggle" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-8 rounded-full bg-brand-gold cursor-pointer shadow-[0_0_15px_rgba(212,175,55,0.4)] transition-all duration-300" for="toggle"></label>
+</div>
+</div>
+<!-- Status Indicator -->
+<div class="text-center">
+<p class="font-label-caps text-label-caps text-brand-gold opacity-80">GHOST MODE IS CURRENTLY ACTIVE</p>
+</div>
+</div>
+</div>
+</body></html>

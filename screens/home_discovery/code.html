@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fuuk’Up - Match Swipe</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary": "#4d2600",
+                      "surface-container-highest": "#35343d",
+                      "on-secondary-fixed-variant": "#5d4200",
+                      "on-background": "#e5e0ed",
+                      "on-error": "#690005",
+                      "primary": "#c6bfff",
+                      "inverse-surface": "#e5e0ed",
+                      "on-tertiary-container": "#fff5f1",
+                      "on-primary-fixed-variant": "#4029ba",
+                      "surface-variant": "#35343d",
+                      "surface-container-high": "#2a2932",
+                      "primary-fixed-dim": "#c6bfff",
+                      "secondary-fixed-dim": "#f4be4e",
+                      "secondary-fixed": "#ffdea4",
+                      "on-secondary-container": "#382700",
+                      "surface-bright": "#3a3841",
+                      "on-primary-container": "#faf6ff",
+                      "surface": "#13121b",
+                      "secondary-container": "#b8891a",
+                      "on-error-container": "#ffdad6",
+                      "tertiary-fixed-dim": "#ffb77d",
+                      "on-tertiary-fixed": "#2f1500",
+                      "on-surface-variant": "#c8c4d7",
+                      "on-surface": "#e5e0ed",
+                      "tertiary-container": "#ac5d00",
+                      "primary-fixed": "#e4dfff",
+                      "surface-tint": "#c6bfff",
+                      "outline-variant": "#474554",
+                      "on-secondary": "#412d00",
+                      "inverse-primary": "#5847d2",
+                      "surface-container-low": "#1c1b23",
+                      "surface-container": "#201f27",
+                      "on-primary": "#2900a0",
+                      "error-container": "#93000a",
+                      "surface-container-lowest": "#0e0d15",
+                      "on-secondary-fixed": "#261900",
+                      "background": "#13121b",
+                      "on-primary-fixed": "#160066",
+                      "secondary": "#f4be4e",
+                      "primary-container": "#6c5ce7",
+                      "outline": "#928ea0",
+                      "error": "#ffb4ab",
+                      "tertiary-fixed": "#ffdcc3",
+                      "surface-dim": "#13121b",
+                      "inverse-on-surface": "#312f38",
+                      "tertiary": "#ffb77d",
+                      "on-tertiary-fixed-variant": "#6e3900"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "lg": "40px",
+                      "gutter": "16px",
+                      "base": "8px",
+                      "md": "24px",
+                      "xs": "4px",
+                      "sm": "12px",
+                      "margin-mobile": "20px"
+              },
+              "fontFamily": {
+                      "headline-lg": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "display": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "body-md": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "headline-md": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "body-lg": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "label-caps": [
+                              "Plus Jakarta Sans"
+                      ]
+              },
+              "fontSize": {
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "display": [
+                              "40px",
+                              {
+                                      "lineHeight": "48px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.1em",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        body {
+            background-color: #0F0C1A;
+            color: #e5e0ed;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-[#0F0C1A] text-on-background h-screen w-screen overflow-hidden flex flex-col font-body-md text-body-md selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)] bg-[#0F0C1A]/80 backdrop-blur-xl md:hidden">
+<div class="flex justify-between items-center h-16 px-5 w-full">
+<button class="text-[#6C5CE7] hover:text-[#6C5CE7] transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">arrow_back</span>
+</button>
+<h1 class="font-['Plus_Jakarta_Sans'] font-bold tracking-tight text-[#6C5CE7] text-xl font-black text-white tracking-tighter uppercase">Fuuk’Up</h1>
+<button class="text-white/60 hover:text-[#6C5CE7] transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">schedule</span>
+</button>
+</div>
+</header>
+<!-- Web Top Nav (Hidden on Mobile) -->
+<nav class="hidden md:flex fixed top-0 w-full z-50 border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)] bg-[#0F0C1A]/80 backdrop-blur-xl h-20 px-8 items-center justify-between">
+<h1 class="font-['Plus_Jakarta_Sans'] font-bold tracking-tight text-[#6C5CE7] text-2xl font-black text-white tracking-tighter uppercase">Fuuk’Up</h1>
+<div class="flex items-center gap-8">
+<a class="text-[#6C5CE7] font-bold font-['Plus_Jakarta_Sans'] text-[14px] uppercase tracking-widest flex items-center gap-2 drop-shadow-[0_0_12px_rgba(108,92,231,0.6)]" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">explore</span>
+                Explore
+            </a>
+<a class="text-white/30 hover:text-white/80 transition-all font-['Plus_Jakarta_Sans'] text-[14px] uppercase tracking-widest flex items-center gap-2" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">timer</span>
+                Timer
+            </a>
+<a class="text-white/30 hover:text-white/80 transition-all font-['Plus_Jakarta_Sans'] text-[14px] uppercase tracking-widest flex items-center gap-2" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">workspace_premium</span>
+                Premium
+            </a>
+<a class="text-white/30 hover:text-white/80 transition-all font-['Plus_Jakarta_Sans'] text-[14px] uppercase tracking-widest flex items-center gap-2" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">chat_bubble</span>
+                Chat
+            </a>
+<a class="text-white/30 hover:text-white/80 transition-all font-['Plus_Jakarta_Sans'] text-[14px] uppercase tracking-widest flex items-center gap-2" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">person</span>
+                Profile
+            </a>
+</div>
+</nav>
+<!-- Main Canvas: Full Screen Swipe Area -->
+<main class="flex-grow relative w-full h-full pt-16 pb-20 md:pt-20 md:pb-0 flex items-center justify-center p-4">
+<!-- Card Stack Container -->
+<div class="relative w-full max-w-md aspect-[3/4] md:aspect-[4/5] perspective-1000">
+<!-- Background Card (Next in stack) -->
+<div class="absolute inset-0 bg-[#1A1333] rounded-3xl shadow-2xl overflow-hidden transform scale-95 translate-y-4 opacity-50 transition-all duration-300">
+<div class="w-full h-full bg-cover bg-center" data-alt="portrait of a mysterious elegant person in a dimly lit high-end cocktail lounge, neon accents, soft focus" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAravj9WT1rpI34cPoZfVw52cVW4A9-XkSJQ0Fdm5R3SemmXEUsBrZRugLr30wt0KXtkcuBxwYaVP5fQ1gXqR3Ccs_GnTcVcXXo5hcMPU-lzOoA1g5dlYR1vU8jUotnE9ei33NDtGoJON2UtguaJpv_nvTtB0FO2RVQjX_P_xGs9AWEjHrdSF1Rzpxey-egUehdxFywfFQN57CKphYgGpxThNHdOjb3dFunKRnAzYANzMCfTtysitGNlV0MuYBztwh-tLmkygdI58Zt');"></div>
+</div>
+<!-- Foreground Card (Active) -->
+<div class="absolute inset-0 bg-[#1A1333] rounded-3xl shadow-[0_20px_50px_rgba(108,92,231,0.15)] overflow-hidden z-10 cursor-grab active:cursor-grabbing border border-white/5">
+<!-- Profile Image -->
+<div class="w-full h-full bg-cover bg-center absolute inset-0" data-alt="close-up portrait of an attractive young woman with dramatic studio lighting, moody atmosphere, luxurious styling" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCQQDjsxH5IQzQfEqwF-_1ng8XSO7WqmprXKqEmoHBourfmmjBnz2IC68EIHRModHq5OwUsqwHNfEopoasx8NfvPifPpYwJpuV0H11GJrjjvuHU6FTn0dfIJjWr6UH1hzfomou0n8pEyKMZWvPow__i-vj7B34cHI6p81iezKhNITQiTO6XuZDRm_UwqCeoNi4UwagLBNxgYTtnHF3N8z2lUUt1vRO1omvWaIeyYFNQI0BFgEggBNPYqguPkQxiZFA_EacX4RG2p4o-');"></div>
+<!-- Gradient Overlay for Text -->
+<div class="absolute inset-x-0 bottom-0 h-3/5 bg-gradient-to-t from-black via-black/70 to-transparent flex flex-col justify-end p-6">
+<!-- Top Badges area (if needed, currently empty) -->
+<div class="absolute top-6 left-6 right-6 flex justify-between items-start">
+<div class="bg-black/40 backdrop-blur-md rounded-full px-3 py-1 flex items-center gap-1 border border-white/10 shadow-lg">
+<span class="material-symbols-outlined text-secondary text-[14px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="font-label-caps text-label-caps text-white">Verified</span>
+</div>
+</div>
+<!-- Profile Info -->
+<div class="mb-4">
+<div class="flex items-end gap-3 mb-1">
+<h2 class="font-display text-display text-white drop-shadow-md">Elena</h2>
+<span class="font-headline-md text-headline-md text-white/80 pb-1">26</span>
+</div>
+<div class="flex items-center gap-4 text-white/70 font-body-md text-body-md">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">location_on</span>
+<span>2 miles away</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">work</span>
+<span>Creative Director</span>
+</div>
+</div>
+</div>
+<!-- Tags/Interests (Glassmorphism) -->
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="bg-white/10 backdrop-blur-md border border-white/5 rounded-full px-4 py-1.5 font-label-caps text-label-caps text-white shadow-sm">Mixology</span>
+<span class="bg-white/10 backdrop-blur-md border border-white/5 rounded-full px-4 py-1.5 font-label-caps text-label-caps text-white shadow-sm">Art Galleries</span>
+<span class="bg-white/10 backdrop-blur-md border border-white/5 rounded-full px-4 py-1.5 font-label-caps text-label-caps text-white shadow-sm">Late Nights</span>
+</div>
+<!-- Action Buttons -->
+<div class="flex justify-center items-center gap-8 mb-4">
+<!-- Pass Button -->
+<button class="w-16 h-16 rounded-full bg-[#1A1333] border border-white/10 flex items-center justify-center text-primary-container shadow-[0_0_20px_rgba(108,92,231,0.1)] hover:bg-[#201f27] hover:scale-105 active:scale-95 transition-all duration-300">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 0;">close</span>
+</button>
+<!-- Super Like / Star -->
+<button class="w-12 h-12 rounded-full bg-surface-container-low border border-white/5 flex items-center justify-center text-primary hover:bg-surface-container hover:scale-105 active:scale-95 transition-all duration-300 transform -translate-y-4">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">star</span>
+</button>
+<!-- Like Button -->
+<button class="w-16 h-16 rounded-full bg-[#1A1333] border border-white/10 flex items-center justify-center text-secondary shadow-[0_0_20px_rgba(244,190,78,0.1)] hover:bg-[#201f27] hover:scale-105 active:scale-95 transition-all duration-300">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="fixed bottom-0 w-full z-50 border-t border-white/10 pb-safe shadow-[0_-10px_40px_rgba(108,92,231,0.15)] bg-[#0F0C1A]/90 backdrop-blur-2xl md:hidden">
+<div class="flex justify-around items-center h-20 w-full px-6">
+<a class="flex flex-col items-center justify-center gap-1 text-[#6C5CE7] drop-shadow-[0_0_12px_rgba(108,92,231,0.6)] scale-110 active:scale-90 transition-all duration-300 group" href="#">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">explore</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-1 text-white/30 hover:text-white/80 transition-all active:scale-90 duration-300 group" href="#">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 0;">timer</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-1 text-white/30 hover:text-white/80 transition-all active:scale-90 duration-300 group" href="#">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 0;">workspace_premium</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-1 text-white/30 hover:text-white/80 transition-all active:scale-90 duration-300 group relative" href="#">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 0;">chat_bubble</span>
+<!-- Unread Indicator -->
+<span class="absolute top-0 right-0 w-2.5 h-2.5 bg-secondary rounded-full shadow-[0_0_8px_rgba(244,190,78,0.8)]"></span>
+</a>
+<a class="flex flex-col items-center justify-center gap-1 text-white/30 hover:text-white/80 transition-all active:scale-90 duration-300 group" href="#">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 0;">person</span>
+</a>
+</div>
+</nav>
+</body></html>

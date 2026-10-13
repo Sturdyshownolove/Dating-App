@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fuuk'Up - Selfie Verification</title>
+<!-- Google Fonts: Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS with configuration -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                            "on-tertiary": "#4d2600",
+                            "surface-container-highest": "#35343d",
+                            "on-secondary-fixed-variant": "#5d4200",
+                            "on-background": "#e5e0ed",
+                            "on-error": "#690005",
+                            "primary": "#c6bfff",
+                            "inverse-surface": "#e5e0ed",
+                            "on-tertiary-container": "#fff5f1",
+                            "on-primary-fixed-variant": "#4029ba",
+                            "surface-variant": "#35343d",
+                            "surface-container-high": "#2a2932",
+                            "primary-fixed-dim": "#c6bfff",
+                            "secondary-fixed-dim": "#f4be4e",
+                            "secondary-fixed": "#ffdea4",
+                            "on-secondary-container": "#382700",
+                            "surface-bright": "#3a3841",
+                            "on-primary-container": "#faf6ff",
+                            "surface": "#13121b",
+                            "secondary-container": "#b8891a",
+                            "on-error-container": "#ffdad6",
+                            "tertiary-fixed-dim": "#ffb77d",
+                            "on-tertiary-fixed": "#2f1500",
+                            "on-surface-variant": "#c8c4d7",
+                            "on-surface": "#e5e0ed",
+                            "tertiary-container": "#ac5d00",
+                            "primary-fixed": "#e4dfff",
+                            "surface-tint": "#c6bfff",
+                            "outline-variant": "#474554",
+                            "on-secondary": "#412d00",
+                            "inverse-primary": "#5847d2",
+                            "surface-container-low": "#1c1b23",
+                            "surface-container": "#201f27",
+                            "on-primary": "#2900a0",
+                            "error-container": "#93000a",
+                            "surface-container-lowest": "#0e0d15",
+                            "on-secondary-fixed": "#261900",
+                            "background": "#13121b",
+                            "on-primary-fixed": "#160066",
+                            "secondary": "#f4be4e",
+                            "primary-container": "#6c5ce7",
+                            "outline": "#928ea0",
+                            "error": "#ffb4ab",
+                            "tertiary-fixed": "#ffdcc3",
+                            "surface-dim": "#13121b",
+                            "inverse-on-surface": "#312f38",
+                            "tertiary": "#ffb77d",
+                            "on-tertiary-fixed-variant": "#6e3900"
+                    },
+                    "borderRadius": {
+                            "DEFAULT": "0.25rem",
+                            "lg": "0.5rem",
+                            "xl": "0.75rem",
+                            "full": "9999px"
+                    },
+                    "spacing": {
+                            "lg": "40px",
+                            "gutter": "16px",
+                            "base": "8px",
+                            "md": "24px",
+                            "xs": "4px",
+                            "sm": "12px",
+                            "margin-mobile": "20px"
+                    },
+                    "fontFamily": {
+                            "headline-lg": ["Plus Jakarta Sans"],
+                            "display": ["Plus Jakarta Sans"],
+                            "body-md": ["Plus Jakarta Sans"],
+                            "headline-md": ["Plus Jakarta Sans"],
+                            "body-lg": ["Plus Jakarta Sans"],
+                            "label-caps": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                            "display": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                            "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                            "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                            "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                            "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-[#0F0C1A] text-on-background antialiased min-h-screen flex flex-col font-body-md overflow-hidden relative">
+<!-- Ambient Glow Effects -->
+<div class="fixed top-[-10%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-primary-container/10 blur-[100px] pointer-events-none z-0"></div>
+<div class="fixed bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] rounded-full bg-secondary/5 blur-[120px] pointer-events-none z-0"></div>
+<!-- TopAppBar (Generated from JSON) -->
+<!-- Suppressing bottom border and using tone/shadow separation as per Style Guide, though JSON style_separation_logic dictates border. JSON Execution rule overrides, applying exact JSON classes. -->
+<div class="bg-[#0F0C1A]/80 backdrop-blur-xl fixed top-0 w-full z-50 border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)] flex justify-between items-center h-16 px-5">
+<!-- Leading Icon -->
+<button class="flex items-center justify-center p-2 rounded-full text-white/60 hover:text-[#6C5CE7] transition-colors active:scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<!-- Headline -->
+<div class="font-['Plus_Jakarta_Sans'] font-bold tracking-tight text-xl font-black text-white tracking-tighter uppercase text-[#6C5CE7]">
+            Fuuk’Up
+        </div>
+<!-- Trailing Icon -->
+<button class="flex items-center justify-center p-2 rounded-full text-white/60 hover:text-[#6C5CE7] transition-colors active:scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined" data-icon="schedule">schedule</span>
+</button>
+</div>
+<!-- Main Canvas (Transactional Flow - No BottomNav) -->
+<main class="flex-1 w-full max-w-md mx-auto px-margin-mobile pt-28 pb-10 flex flex-col items-center justify-between relative z-10 min-h-screen">
+<!-- Header Text -->
+<div class="text-center space-y-sm w-full mt-4">
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Verification</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Look directly at the camera</p>
+</div>
+<!-- Viewfinder Area -->
+<div class="relative flex items-center justify-center w-full max-w-[320px] aspect-square my-lg">
+<!-- Animated Scan Line overlay (Static visual approximation) -->
+<div class="absolute inset-0 rounded-full border-2 border-secondary/20 z-0"></div>
+<!-- Premium Gold Viewfinder Ring -->
+<div class="relative w-full h-full rounded-full border-[3px] border-secondary shadow-[0_0_30px_rgba(244,190,78,0.2)] p-2 z-10 flex items-center justify-center overflow-hidden bg-surface-container-highest/30 backdrop-blur-md">
+<!-- Inner mask for camera preview -->
+<div class="w-full h-full rounded-full overflow-hidden relative bg-black/50 border border-white/5">
+<!-- Simulated Camera Preview Image -->
+<img alt="Simulated user selfie" class="w-full h-full object-cover opacity-80 mix-blend-luminosity hover:mix-blend-normal transition-all duration-700" data-alt="Close up portrait of a confident young man looking directly into the camera, dramatic moody lighting, deep shadows, cinematic style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWNda-iKazLsOXt_AzZrkKVYdWZLEcCObOvR3YQu-k8osFJ_FPMZxgfxhVI0fbn9yoLleQ6SXh-sgJMSCBd5mUJoqICGG2o4Htep7dgbKH-FQAM6HhKRK2w01A9uBpQDo7ZKjPG_cb8pEoWGM5XpQMMvEa7dISUoB1rA9tvY16jgVnYJjX3tS_bMtVAlaXNpwHohwD7WhocU4_Oo92r8ok99zO-3E08WJV_FrlZnrJ6dt9xGTQ2MTqCsDE6PnkTg3qwL7puK_COaBo"/>
+<!-- Facial recognition targeting reticle overlay -->
+<div class="absolute inset-0 flex items-center justify-center opacity-40 pointer-events-none">
+<div class="w-[60%] h-[60%] border-[0.5px] border-white/50 rounded-[40%] flex items-center justify-center">
+<div class="w-[40%] h-[1px] bg-white/50 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
+<div class="h-[40%] w-[1px] bg-white/50 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
+</div>
+</div>
+</div>
+<!-- Glow/Halos on Ring -->
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-1 bg-secondary rounded-full blur-[4px] opacity-60"></div>
+<div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-1/3 h-1 bg-secondary rounded-full blur-[3px] opacity-40"></div>
+</div>
+</div>
+<!-- Action Area -->
+<div class="w-full space-y-md flex flex-col items-center mt-auto mb-8">
+<!-- Contextual helper -->
+<div class="flex items-center gap-2 bg-surface-container/50 border border-white/5 rounded-full px-4 py-2 backdrop-blur-md">
+<span class="material-symbols-outlined text-secondary" data-icon="lock" style="font-size: 16px;">lock</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">Secure Identity Check</span>
+</div>
+<!-- Primary Button -->
+<button class="w-full bg-primary-container text-on-primary-container font-headline-md text-body-lg font-bold py-4 px-6 rounded-xl shadow-[0_0_20px_rgba(108,92,231,0.25)] hover:shadow-[0_0_30px_rgba(108,92,231,0.4)] hover:bg-inverse-primary transition-all duration-300 active:scale-95 flex items-center justify-center gap-3">
+<span class="material-symbols-outlined" data-icon="photo_camera" data-weight="fill">photo_camera</span>
+                Take Photo
+            </button>
+<button class="font-body-md text-on-surface-variant/60 hover:text-on-surface transition-colors">
+                Cancel
+            </button>
+</div>
+</main>
+</body></html>

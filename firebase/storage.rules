@@ -1,0 +1,39 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    // Chat images. Access is gated by participation in the parent match doc
+    // (Firestore). Closes the leak-on-exfil risk of the prior Cloudinary path:
+    // a stolen URL is useless without a valid auth token + participant status.
+    //
+    // Profile photos + verification artifacts are NOT served from Storage today
+    // (profile → Cloudinary signed uploads; verification → cut off entirely).
+    // The default-deny block at the bottom covers everything else.
+    match /chats/{matchId}/{filename} {
+      function matchDoc() {
+        return firestore.get(
+          /databases/(default)/documents/matches/$(matchId)
+        ).data;
+      }
+
+      allow read: if request.auth != null
+        && (matchDoc().userA == request.auth.uid
+            || matchDoc().userB == request.auth.uid);
+
+      allow write: if request.auth != null
+        && (matchDoc().userA == request.auth.uid
+            || matchDoc().userB == request.auth.uid)
+        && matchDoc().isActive == true
+        && matchDoc().isBlocked == false
+        && request.resource.size < 10 * 1024 * 1024
+        && request.resource.contentType.matches('image/(jpeg|png|webp)');
+
+      // Deletes go via admin SDK if/when account-deletion CF ships.
+      allow delete: if false;
+    }
+
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "expo": {
+    "name": "Fuuk'Up",
+    "slug": "fuukup",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "scheme": "fuukup",
+    "splash": {
+      "backgroundColor": "#0F0C1A",
+      "image": "./assets/icon.png"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.fuukup.app",
+      "infoPlist": {
+        "NSCameraUsageDescription": "We need camera access for selfie verification and sharing photos.",
+        "NSPhotoLibraryUsageDescription": "We need photo library access to upload profile photos.",
+        "NSLocationWhenInUseUsageDescription": "We need your location to show nearby matches."
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#0F0C1A"
+      },
+      "package": "com.fuukup.app",
+      "googleServicesFile": "./google-services.json",
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.RECEIVE_BOOT_COMPLETED",
+        "android.permission.VIBRATE",
+        "android.permission.RECORD_AUDIO",
+        "android.permission.ACCESS_COARSE_LOCATION"
+      ]
+    },
+    "newArchEnabled": true,
+    "plugins": [
+      "expo-router",
+      "expo-font",
+      "expo-image-picker",
+      "expo-location",
+      "expo-notifications",
+      "expo-camera",
+      "expo-secure-store",
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#0F0C1A",
+          "image": "./assets/icon.png"
+        }
+      ],
+      "@react-native-firebase/app",
+      "@react-native-firebase/auth",
+      "expo-asset",
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "kotlinVersion": "1.9.25",
+            "minSdkVersion": 24,
+            "compileSdkVersion": 35,
+            "targetSdkVersion": 34
+          }
+        }
+      ],
+      "@sentry/react-native"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "25d6d3c9-bdab-42d8-a6af-3428f988a63e"
+      }
+    }
+  }
+}

@@ -1,0 +1,199 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ==================== Helper Functions ====================
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return request.auth.uid == userId;
+    }
+
+    function getUserData(userId) {
+      return get(/databases/$(database)/documents/users/$(userId)).data;
+    }
+
+    function isVerified(userId) {
+      let user = getUserData(userId);
+      return user.verifiedSelfie == true && user.verifiedID == true;
+    }
+
+    function isMatchParticipant(matchData) {
+      return request.auth.uid == matchData.userA || request.auth.uid == matchData.userB;
+    }
+
+    // ==================== Users ====================
+    match /users/{userId} {
+      // Any authenticated user can read profiles (for swiping)
+      allow read: if isAuthenticated();
+
+      // Only the user can create their own profile.
+      // On create, the effective verified/tier values must be the safe defaults —
+      // those fields are admin-only, written later by Cloud Functions
+      // (verification flow, RevenueCat webhook) which bypass rules.
+      // isProfileComplete must start false; the user opts into the discovery
+      // feed only via profile-setup.
+      allow create: if isOwner(userId)
+        && request.resource.data.get('verifiedSelfie', false) == false
+        && request.resource.data.get('verifiedID', false) == false
+        && request.resource.data.get('tierLevel', 'FREE') == 'FREE'
+        && request.resource.data.get('isProfileComplete', false) == false;
+
+      // Owner-only updates, except:
+      //   1. verifiedSelfie / verifiedID / tierLevel are admin-only fields,
+      //      written by Cloud Functions (verification flow, RevenueCat webhook)
+      //      which bypass rules.
+      //   2. Daily-counter fields (swipesUsedToday, boostsUsedToday,
+      //      superLikesUsedToday, lastSwipeReset, swipedUserIds) now live in
+      //      `users/{uid}/private/state`, written by the swipeAction callable
+      //      via admin SDK (see security_counters_private_2026-05-24). This
+      //      top-level lock is retained as defense-in-depth so a client can't
+      //      resurrect these keys on the broadly-readable user doc to leak
+      //      activity intel or bypass the daily cap.
+      //   3. isProfileComplete may only flip true if the doc has at least one
+      //      photo — gates discovery feed inclusion. Name/age/gender validation
+      //      will be added once Mobile M2 collects those fields (today the
+      //      app's profile-setup screen never sets them).
+      allow update: if isOwner(userId)
+        && !request.resource.data.diff(resource.data)
+              .affectedKeys()
+              .hasAny([
+                'verifiedSelfie', 'verifiedID', 'tierLevel',
+                'swipesUsedToday', 'boostsUsedToday', 'superLikesUsedToday',
+                'lastSwipeReset', 'swipedUserIds'
+              ])
+        && (request.resource.data.get('isProfileComplete', false) == false
+            || request.resource.data.get('photos', []).size() >= 1);
+
+      // No user can delete their own doc directly (use Cloud Function)
+      allow delete: if false;
+
+      // ==================== Private subcollection ====================
+      // Owner-only readable storage for fields that must NOT leak to other
+      // signed-in users via the broad `users` read rule above. Today this
+      // holds the Expo push token (`push` doc) — Expo's push API is
+      // unauthenticated, so leaking the token = anyone in the app can
+      // push-spam any device. See 06_Reports/security_push_token_private_*.
+      // Cloud Functions write via admin SDK (bypasses rules) when they need
+      // to seed/clear; client writes are constrained to the owner.
+      match /private/{docId} {
+        allow read, write: if isOwner(userId);
+      }
+    }
+
+    // ==================== Swipes ====================
+    match /swipes/{swipeId} {
+      // Users can read their own swipes (theirs as either sender or recipient).
+      allow read: if isAuthenticated()
+        && (resource.data.fromUser == request.auth.uid
+            || resource.data.toUser == request.auth.uid);
+
+      // Swipes are created exclusively by the `swipeAction` Cloud Function,
+      // which writes via the admin SDK (bypasses rules) and enforces the daily
+      // cap atomically. Direct client writes are denied so the cap cannot be
+      // bypassed by skipping the counter increment.
+      allow create, update, delete: if false;
+    }
+
+    // ==================== Matches ====================
+    match /matches/{matchId} {
+      // Only participants can read
+      allow read: if isAuthenticated()
+        && isMatchParticipant(resource.data);
+
+      // Matches are created exclusively by the swipeAction Cloud Function
+      // (admin SDK bypasses rules). Direct client creation would let any
+      // authed user fabricate matches between arbitrary users.
+      allow create: if false;
+
+      // The only legitimate client write to a match doc is the caller's own
+      // typing flag (`typing_<uid>`). All other mutations now go through
+      // Cloud Functions (admin SDK, bypasses rules):
+      //   - isActive / isBlocked / lastMessage / lastMessageAt — endMatch
+      //     callable, onMessageCreate trigger, autoExpireMatches scheduled.
+      //   - warningNotificationSent — timerWarningCheck scheduled.
+      //   - userA / userB / createdAt / expiresAt — swipeAction (on create).
+      // Locking to hasOnly closes the early-expire grief + typing-spoof
+      // vectors flagged in 06_Reports/security_matches_update_lock_2026-05-17.
+      allow update: if isAuthenticated()
+        && isMatchParticipant(resource.data)
+        && request.resource.data.diff(resource.data)
+              .affectedKeys()
+              .hasOnly(['typing_' + request.auth.uid]);
+
+      // No deletes
+      allow delete: if false;
+
+      // ==================== Messages (subcollection) ====================
+      match /messages/{messageId} {
+        // Only match participants can read messages
+        allow read: if isAuthenticated()
+          && isMatchParticipant(
+            get(/databases/$(database)/documents/matches/$(matchId)).data
+          );
+
+        // Can only send messages if:
+        // 1. Authenticated
+        // 2. Sender ID matches auth
+        // 3. Is match participant
+        // 4. Match is active and not blocked
+        // 5. Match has not expired (defense in depth — autoExpireMatches
+        //    flips isActive every 1 min, this closes the sub-minute window
+        //    where the cron hasn't fired yet but the timer has elapsed).
+        // 6. timestamp is server-authoritative. `serverTimestamp()`
+        //    resolves to request.time during evaluation, so the legit
+        //    client passes; a forged client-clock / far-future value is
+        //    rejected. Without this, messages (ordered by timestamp) and
+        //    the parent lastMessageAt (set by onMessageCreate from this
+        //    field, the match-list sort key) are client-manipulable — a
+        //    thread mis-order + match-list pinning grief vector.
+        // Note: get() calls are cached per rule evaluation, so all
+        // references below are a single Firestore read.
+        allow create: if isAuthenticated()
+          && request.resource.data.senderId == request.auth.uid
+          && request.resource.data.timestamp == request.time
+          && isMatchParticipant(
+            get(/databases/$(database)/documents/matches/$(matchId)).data
+          )
+          && get(/databases/$(database)/documents/matches/$(matchId)).data.isActive == true
+          && get(/databases/$(database)/documents/matches/$(matchId)).data.isBlocked == false
+          && get(/databases/$(database)/documents/matches/$(matchId)).data.expiresAt > request.time;
+
+        // Allow updating 'seen' status only
+        allow update: if isAuthenticated()
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['seen']);
+
+        allow delete: if false;
+      }
+    }
+
+    // ==================== Reports ====================
+    match /reports/{reportId} {
+      allow create: if isAuthenticated()
+        && request.resource.data.reporterId == request.auth.uid;
+      allow read, update, delete: if false;
+    }
+
+    // ==================== Audit Log ====================
+    // Compliance + incident-response trail. Only Cloud Functions (admin
+    // SDK) write here, via the writeAuditLog helper in functions/src/index.ts.
+    // Reads are restricted to operators with a custom claim (not granted
+    // by the app today); explicit deny keeps it default-locked.
+    match /audit_log/{eventId} {
+      allow read, write: if false;
+    }
+
+    // ==================== Discovery Index ====================
+    // Denormalized per-user feed index (geohash + filterable attributes),
+    // written ONLY by Cloud Functions (admin SDK) — the discovery sync
+    // triggers + backfill in functions/src/index.ts. It carries precise
+    // lat/lng for the server-side distance refine, so it must never be
+    // client-readable. The Phase-2 feed callable reads it via admin SDK
+    // and returns only public profile fields + a bucketed distance.
+    match /discovery/{uid} {
+      allow read, write: if false;
+    }
+  }
+}

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fuuk'Up Countdown</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary": "#4d2600",
+                      "surface-container-highest": "#35343d",
+                      "on-secondary-fixed-variant": "#5d4200",
+                      "on-background": "#e5e0ed",
+                      "on-error": "#690005",
+                      "primary": "#c6bfff",
+                      "inverse-surface": "#e5e0ed",
+                      "on-tertiary-container": "#fff5f1",
+                      "on-primary-fixed-variant": "#4029ba",
+                      "surface-variant": "#35343d",
+                      "surface-container-high": "#2a2932",
+                      "primary-fixed-dim": "#c6bfff",
+                      "secondary-fixed-dim": "#f4be4e",
+                      "secondary-fixed": "#ffdea4",
+                      "on-secondary-container": "#382700",
+                      "surface-bright": "#3a3841",
+                      "on-primary-container": "#faf6ff",
+                      "surface": "#13121b",
+                      "secondary-container": "#b8891a",
+                      "on-error-container": "#ffdad6",
+                      "tertiary-fixed-dim": "#ffb77d",
+                      "on-tertiary-fixed": "#2f1500",
+                      "on-surface-variant": "#c8c4d7",
+                      "on-surface": "#e5e0ed",
+                      "tertiary-container": "#ac5d00",
+                      "primary-fixed": "#e4dfff",
+                      "surface-tint": "#c6bfff",
+                      "outline-variant": "#474554",
+                      "on-secondary": "#412d00",
+                      "inverse-primary": "#5847d2",
+                      "surface-container-low": "#1c1b23",
+                      "surface-container": "#201f27",
+                      "on-primary": "#2900a0",
+                      "error-container": "#93000a",
+                      "surface-container-lowest": "#0e0d15",
+                      "on-secondary-fixed": "#261900",
+                      "background": "#13121b",
+                      "on-primary-fixed": "#160066",
+                      "secondary": "#f4be4e",
+                      "primary-container": "#6c5ce7",
+                      "outline": "#928ea0",
+                      "error": "#ffb4ab",
+                      "tertiary-fixed": "#ffdcc3",
+                      "surface-dim": "#13121b",
+                      "inverse-on-surface": "#312f38",
+                      "tertiary": "#ffb77d",
+                      "on-tertiary-fixed-variant": "#6e3900"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "lg": "40px",
+                      "gutter": "16px",
+                      "base": "8px",
+                      "md": "24px",
+                      "xs": "4px",
+                      "sm": "12px",
+                      "margin-mobile": "20px"
+              },
+              "fontFamily": {
+                      "headline-lg": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "display": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "body-md": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "headline-md": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "body-lg": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "label-caps": [
+                              "Plus Jakarta Sans"
+                      ]
+              },
+              "fontSize": {
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "display": [
+                              "40px",
+                              {
+                                      "lineHeight": "48px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.1em",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        .timer-glow {
+            box-shadow: 0 0 40px rgba(244, 190, 78, 0.2);
+        }
+        .text-glow {
+            text-shadow: 0 0 20px rgba(244, 190, 78, 0.4);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-md min-h-screen flex flex-col antialiased">
+<!-- TopAppBar (Transactional Screen, so minimal/close context, but keeping JSON styling structure for consistency if needed, though instruction says transactional implies no shell, we keep a back button for navigation safety) -->
+<header class="fixed top-0 w-full z-50 bg-[#0F0C1A]/80 backdrop-blur-xl border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)]">
+<div class="flex justify-between items-center h-16 px-5 w-full">
+<button class="text-on-surface hover:text-[#6C5CE7] transition-colors active:scale-95 duration-200 flex items-center justify-center p-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">arrow_back</span>
+</button>
+<div class="font-['Plus_Jakarta_Sans'] font-bold tracking-tight text-xl font-black text-white tracking-tighter uppercase">Fuuk’Up</div>
+<div class="w-10"></div> <!-- Spacer for center alignment -->
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 flex flex-col items-center justify-center pt-20 pb-24 px-margin-mobile relative overflow-hidden">
+<!-- Background decorative ambient glow -->
+<div class="absolute inset-0 z-0 flex items-center justify-center pointer-events-none opacity-30">
+<div class="w-96 h-96 bg-primary-container rounded-full blur-[120px]"></div>
+<div class="w-64 h-64 bg-secondary rounded-full blur-[100px] mix-blend-screen ml-12 -mt-12"></div>
+</div>
+<div class="z-10 flex flex-col items-center w-full max-w-md">
+<!-- Connection Info -->
+<div class="text-center mb-12">
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest mb-2">Your connection expires in</p>
+<h1 class="font-headline-md text-headline-md text-on-surface">Elena, 24</h1>
+</div>
+<!-- Timer Ring -->
+<div class="relative w-72 h-72 mb-16 flex items-center justify-center">
+<!-- Background Track -->
+<svg class="absolute inset-0 w-full h-full -rotate-90" viewbox="0 0 100 100">
+<circle class="stroke-surface-container-high" cx="50" cy="50" fill="none" r="46" stroke-width="2"></circle>
+</svg>
+<!-- Active Progress Stroke (Gold) -->
+<svg class="absolute inset-0 w-full h-full -rotate-90 timer-glow rounded-full" viewbox="0 0 100 100">
+<!-- Dashboard array roughly 289 for circumference (2*pi*46), full is 289 -->
+<circle class="stroke-secondary" cx="50" cy="50" fill="none" r="46" stroke-dasharray="289" stroke-dashoffset="0" stroke-linecap="round" stroke-width="4"></circle>
+</svg>
+<!-- Center Display -->
+<div class="text-center z-10 flex flex-col items-center">
+<span class="material-symbols-outlined text-secondary mb-2" style="font-variation-settings: 'FILL' 1;">timer</span>
+<div class="font-display text-display text-secondary text-glow font-bold tracking-tighter">
+                        59:59
+                    </div>
+</div>
+</div>
+<!-- Actions -->
+<div class="w-full space-y-4">
+<button class="w-full bg-primary-container text-on-primary-container font-headline-md text-headline-md py-4 px-6 rounded-xl flex items-center justify-center gap-3 shadow-[0_0_20px_rgba(108,92,231,0.3)] hover:bg-primary-fixed transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined">chat_bubble</span>
+                    Enter Chat
+                </button>
+<button class="w-full bg-surface-container-high border border-outline-variant text-on-surface font-body-md text-body-md py-4 px-6 rounded-xl flex items-center justify-center gap-3 hover:bg-surface-container-highest transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined">person</span>
+                    View Profile
+                </button>
+</div>
+</div>
+</main>
+</body></html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fuuk'Up - It's a Match!</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary": "#4d2600",
+                        "surface-container-highest": "#35343d",
+                        "on-secondary-fixed-variant": "#5d4200",
+                        "on-background": "#e5e0ed",
+                        "on-error": "#690005",
+                        "primary": "#c6bfff",
+                        "inverse-surface": "#e5e0ed",
+                        "on-tertiary-container": "#fff5f1",
+                        "on-primary-fixed-variant": "#4029ba",
+                        "surface-variant": "#35343d",
+                        "surface-container-high": "#2a2932",
+                        "primary-fixed-dim": "#c6bfff",
+                        "secondary-fixed-dim": "#f4be4e",
+                        "secondary-fixed": "#ffdea4",
+                        "on-secondary-container": "#382700",
+                        "surface-bright": "#3a3841",
+                        "on-primary-container": "#faf6ff",
+                        "surface": "#13121b",
+                        "secondary-container": "#b8891a",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#ffb77d",
+                        "on-tertiary-fixed": "#2f1500",
+                        "on-surface-variant": "#c8c4d7",
+                        "on-surface": "#e5e0ed",
+                        "tertiary-container": "#ac5d00",
+                        "primary-fixed": "#e4dfff",
+                        "surface-tint": "#c6bfff",
+                        "outline-variant": "#474554",
+                        "on-secondary": "#412d00",
+                        "inverse-primary": "#5847d2",
+                        "surface-container-low": "#1c1b23",
+                        "surface-container": "#201f27",
+                        "on-primary": "#2900a0",
+                        "error-container": "#93000a",
+                        "surface-container-lowest": "#0e0d15",
+                        "on-secondary-fixed": "#261900",
+                        "background": "#13121b",
+                        "on-primary-fixed": "#160066",
+                        "secondary": "#f4be4e",
+                        "primary-container": "#6c5ce7",
+                        "outline": "#928ea0",
+                        "error": "#ffb4ab",
+                        "tertiary-fixed": "#ffdcc3",
+                        "surface-dim": "#13121b",
+                        "inverse-on-surface": "#312f38",
+                        "tertiary": "#ffb77d",
+                        "on-tertiary-fixed-variant": "#6e3900"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "40px",
+                        "gutter": "16px",
+                        "base": "8px",
+                        "md": "24px",
+                        "xs": "4px",
+                        "sm": "12px",
+                        "margin-mobile": "20px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "display": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "label-caps": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "display": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glow-text { text-shadow: 0 0 20px rgba(244, 190, 78, 0.6); }
+        .glow-avatar { box-shadow: 0 0 30px rgba(108, 92, 231, 0.4); }
+        .glass-panel { background: rgba(26, 19, 51, 0.6); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .timer-ring {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: conic-gradient(var(--tw-colors-secondary) 0% 100%, transparent 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .timer-ring::before {
+            content: '';
+            position: absolute;
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background-color: var(--tw-colors-background);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col justify-center items-center overflow-hidden relative">
+<!-- Ambient Background Glow -->
+<div class="absolute inset-0 z-0 pointer-events-none">
+<div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary-container rounded-full mix-blend-screen filter blur-[120px] opacity-20"></div>
+<div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary rounded-full mix-blend-screen filter blur-[120px] opacity-10"></div>
+</div>
+<!-- Main Content Canvas (No Nav Shell per Transactional Rule) -->
+<main class="relative z-10 flex flex-col items-center justify-center w-full max-w-md px-margin-mobile py-lg text-center">
+<!-- Match Announcement -->
+<div class="mb-md">
+<h1 class="font-display text-display text-secondary glow-text tracking-tighter mb-xs">It's a Match!</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">You and Alex liked each other.</p>
+</div>
+<!-- Avatar Cluster -->
+<div class="flex items-center justify-center gap-base mb-lg relative">
+<div class="relative z-10 w-28 h-28 rounded-full border-2 border-surface overflow-hidden glow-avatar">
+<img alt="Your Profile" class="w-full h-full object-cover" data-alt="close up portrait of an elegant woman with natural makeup looking slightly away, soft studio lighting, muted background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDW4ovB9HjTwLSf6lWwEXooF0GbB7r5qA9OrlId2KA9Q7_Ss0CdFSPY6FDWia8AzuAdaaakDyJmLsnhwwGyCuO4tQcgXy0vCDRXXfTFAi_ksnjd_PlPr1UeKB-6y7CTQtDQchCtXeqN455uBZdygEriffYhpXJXmpc5lVTd3HrkCNk_n0HubR0tSMp72spwZtbpwF77Q-ara3qCWzMwt1yKHovJ2PPbhtWzaLLUV7g3DI74Aoc8umhqdfVzi62M7jqAof4h06s_WqDX"/>
+</div>
+<div class="absolute z-20 flex items-center justify-center w-10 h-10 rounded-full bg-surface glass-panel">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</div>
+<div class="relative z-10 w-28 h-28 rounded-full border-2 border-surface overflow-hidden glow-avatar">
+<img alt="Alex's Profile" class="w-full h-full object-cover" data-alt="close up portrait of a handsome man with a slight stubble looking directly at camera, moody lighting, dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkRcLIpu0RUT6ZNT5y_k7ixzXljELaopNHGmjlPsrZb6aM2717ypHXs2QMUn162kT2mB2Lh9x3462_YhG3vhWNgryYNWMMICQVVzihozkiKBiezCbOBasTkAXfk_w6AaoZrnSmuRzhW6rOiOmxnt2y0KDCbjhtHnS9JZUYcE6MqpwGLdFD5VVd4xFMer0Stf9yyB9g5m31YK0Dy38tHvjv36JIe2kIl1aKA1VqN0Zd_O6gtTfG23qx-DSTSHIJm8kSYJfC_kh0H65w"/>
+</div>
+</div>
+<!-- Timer Section -->
+<div class="flex flex-col items-center mb-lg">
+<p class="font-headline-md text-headline-md text-on-surface mb-sm">The clock is ticking...</p>
+<div class="timer-ring shadow-[0_0_20px_rgba(244,190,78,0.2)]">
+<div class="relative z-10 font-display text-display text-secondary">
+                    59:59
+                </div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex flex-col w-full gap-sm mt-md">
+<button class="w-full py-4 px-6 bg-primary-container text-white font-headline-md text-headline-md rounded-xl shadow-[0_0_15px_rgba(108,92,231,0.5)] hover:scale-[0.98] transition-transform flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">chat_bubble</span>
+                Start Chat
+            </button>
+<button class="w-full py-4 px-6 bg-transparent text-on-surface-variant font-headline-md text-headline-md rounded-xl border border-outline-variant hover:bg-surface-container transition-colors">
+                Keep Swiping
+            </button>
+</div>
+</main>
+</body></html>
